@@ -28,7 +28,7 @@ function getUserLocation() {
         var userMarker = L.marker([userLat, userLon]).addTo(map);
 
         userMarker
-          .bindPopup("<b>Twoja lokalizacja</b><br>Jesteś tutaj!")
+          .bindPopup("<b>Twoja lokalizacja</b><br>Jesteś tutaj! (21.25)")
           .openPopup();
       },
       function (error) {
