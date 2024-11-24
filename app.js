@@ -1,3 +1,5 @@
+import { getUserLocation, setMarkers } from "./location.js";
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("service-worker.js")
@@ -16,28 +18,5 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-function getUserLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        var userLat = position.coords.latitude;
-        var userLon = position.coords.longitude;
-
-        map.setView([userLat, userLon], 13);
-
-        var userMarker = L.marker([userLat, userLon]).addTo(map);
-
-        userMarker
-          .bindPopup("<b>Twoja lokalizacja</b><br>Jesteś tutaj! (21.25)")
-          .openPopup();
-      },
-      function (error) {
-        console.log("Błąd pobierania lokalizacji:", error);
-      }
-    );
-  } else {
-    alert("Geolokalizacja jest niedostępna w tej przeglądarce.");
-  }
-}
-
-getUserLocation();
+getUserLocation(map);
+setMarkers(map);

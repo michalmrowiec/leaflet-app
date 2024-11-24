@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Pomnik Reksia",
+    "latitude": 49.82311330035077,
+    "longitude": 19.048342803649078,
+    "description": "Słynny pomnik Reksia w Bielsku-Białej."
+  },
+  {
+    "name": "Bielski Rynek",
+    "latitude": 49.82120089482618,
+    "longitude": 19.04269896525375,
+    "description": "Główny plac w centrum Bielska-Białej, otoczony pięknymi kamienicami."
+  },
+  {
+    "name": "Wzgórze Trzy Lipki",
+    "latitude": 49.83485333588915,
+    "longitude": 19.017476683748615,
+    "description": "Piękna lokalizacja z panoramą na miasto i okolice."
+  },
+  {
+    "name": "Bielska Katedra",
+    "latitude": 49.82032970197813,
+    "longitude": 19.042537752466952,
+    "description": "Katedra św. Mikołaja, jeden z najważniejszych zabytków Bielska-Białej."
+  },
+  {
+    "name": "Zamek Książąt Sułkowskich",
+    "latitude": 49.821684510771746,
+    "longitude": 19.044386699792764,
+    "description": "Zamek z XIV wieku, obecnie muzeum, jedno z ważniejszych miejsc w Bielsku-Białej."
+  }
+]
