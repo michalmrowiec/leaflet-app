@@ -52,7 +52,7 @@ export function teleportUser(lat, lon) {
   userContext.userLat = newLat;
   userContext.userLon = newLon;
 
-  map.setView([newLat, newLon], 13);
+  map.setView([newLat, newLon], 18);
 
   if (userContext.userMarker) {
     userContext.userMarker.setLatLng([newLat, newLon]);
@@ -62,9 +62,7 @@ export function teleportUser(lat, lon) {
     }).addTo(map);
   }
 
-  userContext.userMarker
-    .bindPopup("<b>Twoja lokalizacja</b><br>Jesteś tutaj!")
-    .openPopup();
+  userContext.userMarker.bindPopup("<b>Twoja lokalizacja</b><br>Jesteś tutaj!");
 
   updateMarkers(map);
 }

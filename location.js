@@ -61,7 +61,7 @@ export function setMarkers(map) {
 
         marker.bindPopup(
           `<b>${point.name}</b><br>${point.description}
-          <button onclick="teleportUser(${point.latitude}, ${point.longitude})">Teleportuj</button>`
+          <button onclick="teleportUser(${point.latitude}, ${point.longitude})" class="btn btn-sm btn-outline-primary">Teleportuj</button>`
         );
       });
     })
@@ -95,7 +95,7 @@ export function updateMarkers(map) {
           )} m<br>
           <button onclick="teleportUser(${point.latitude}, ${
             point.longitude
-          })">Teleportuj</button>`
+          })" class="btn btn-sm btn-outline-primary">Teleportuj</button>`
         );
       }
     });
