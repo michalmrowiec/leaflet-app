@@ -18,9 +18,9 @@ export function getUserLocation(map) {
           { icon: userIcon }
         ).addTo(map);
 
-        userContext.userMarker
-          .bindPopup("<b>Twoja lokalizacja</b><br>Jesteś tutaj!")
-          .openPopup();
+        userContext.userMarker.bindPopup(
+          "<b>Twoja lokalizacja</b><br>Jesteś tutaj!"
+        );
 
         updateMarkers(map);
       },

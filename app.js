@@ -70,3 +70,9 @@ export function teleportUser(lat, lon) {
 }
 
 window.teleportUser = teleportUser;
+
+export function findMe() {
+  map.setView([userContext.userLat, userContext.userLon], 13);
+}
+
+window.findMe = findMe;
