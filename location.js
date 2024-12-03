@@ -82,17 +82,25 @@ export function updateMarkers(map) {
 
       if (distance <= 50) {
         marker.setPopupContent(
-          `<b>${point.name}</b><br>${
+          `<b>${point.name}</b>
+          <br><b>Dotarłeś!</b> Odległość: ${distance.toFixed(2)} m<br>${
             point.description
-          }<br>Odległość: ${distance.toFixed(2)} m<br><b>Dotarłeś!</b>`
+          }<br>
+    <button onclick="readDescription('${point.description.replace(
+      /'/g,
+      "\\'"
+    )}')" 
+    class="btn btn-sm btn-outline-primary">Przeczytaj opis</button>
+    <button onclick="stopReading()" class="btn btn-sm btn-outline-danger">Zatrzymaj czytanie</button>`
         );
       } else {
         marker.setPopupContent(
-          `<b>${point.name}</b><br>${
-            point.description
-          }<br><a href="${googleMapsUrl}" target="_blank">Nawiguj w Google Maps</a><br>Odległość: ${distance.toFixed(
+          `<b>${
+            point.name
+          }</b><br>Dotrzyj do punktu, aby poznać jego historię!<br>
+          Odległość: ${distance.toFixed(
             2
-          )} m<br>
+          )} m<br><a href="${googleMapsUrl}" target="_blank">Nawiguj w Google Maps</a><br>
           <button onclick="teleportUser(${point.latitude}, ${
             point.longitude
           })" class="btn btn-sm btn-outline-primary">Teleportuj</button>`

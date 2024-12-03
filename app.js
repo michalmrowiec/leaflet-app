@@ -66,11 +66,40 @@ export function teleportUser(lat, lon) {
 
   updateMarkers(map);
 }
-
 window.teleportUser = teleportUser;
 
 export function findMe() {
   map.setView([userContext.userLat, userContext.userLon], 13);
 }
-
 window.findMe = findMe;
+
+let currentUtterance = null;
+
+function readDescription(text) {
+  if ("speechSynthesis" in window) {
+    const voices = speechSynthesis.getVoices();
+    const femaleVoice =
+      voices.find(
+        (voice) =>
+          voice.lang === "pl-PL" && voice.name.toLowerCase().includes("female")
+      ) || voices.find((voice) => voice.lang === "pl-PL");
+
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.lang = "pl-PL";
+    if (femaleVoice) {
+      currentUtterance.voice = femaleVoice;
+    }
+
+    speechSynthesis.speak(currentUtterance);
+  } else {
+    alert("Twoja przeglądarka nie obsługuje funkcji Text-to-Speech.");
+  }
+}
+window.readDescription = readDescription;
+
+function stopReading() {
+  if ("speechSynthesis" in window) {
+    speechSynthesis.cancel();
+  }
+}
+window.stopReading = stopReading;
