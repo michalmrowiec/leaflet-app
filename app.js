@@ -18,7 +18,7 @@ if ("serviceWorker" in navigator) {
 }
 
 var map = L.map("map").setView([51.505, -0.09], 13);
-map.setView([49.82245, 19.04686], 13);
+map.setView([49.82245, 19.04686], 14);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
