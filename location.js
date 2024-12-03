@@ -60,7 +60,7 @@ export function setMarkers(map) {
         });
 
         marker.bindPopup(
-          `<b>${point.name}</b><br>${point.description}
+          `<h5><b>${point.name}</b></h5><br>${point.description}
           <button onclick="teleportUser(${point.latitude}, ${point.longitude})" class="btn btn-sm btn-outline-primary">Teleportuj</button>`
         );
       });
@@ -82,22 +82,25 @@ export function updateMarkers(map) {
 
       if (distance <= 50) {
         marker.setPopupContent(
-          `<b>${point.name}</b>
-          <br><b>Dotarłeś!</b> Odległość: ${distance.toFixed(2)} m<br>${
+          `<h5><b>${point.name}</b></h5>
+          <br><b>Dotarłeś!</b> Odległość: ${distance.toFixed(2)} m<br><p>${
             point.description
-          }<br>
+          }</p><br>
     <button onclick="readDescription('${point.description.replace(
       /'/g,
       "\\'"
     )}')" 
     class="btn btn-sm btn-outline-primary">Przeczytaj opis</button>
-    <button onclick="stopReading()" class="btn btn-sm btn-outline-danger">Zatrzymaj czytanie</button>`
+    <button onclick="stopReading()" class="btn btn-sm btn-outline-danger">Zatrzymaj czytanie</button>
+    <button onclick="openQuizWindow('${
+      point.name
+    }')" class="btn btn-sm btn-outline-success">Quiz</button>`
         );
       } else {
         marker.setPopupContent(
-          `<b>${
+          `<h5><b>${
             point.name
-          }</b><br>Dotrzyj do punktu, aby poznać jego historię!<br>
+          }</b></h5><br>Dotrzyj do punktu, aby poznać jego historię!<br>
           Odległość: ${distance.toFixed(
             2
           )} m<br><a href="${googleMapsUrl}" target="_blank">Nawiguj w Google Maps</a><br>

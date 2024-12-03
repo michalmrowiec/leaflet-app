@@ -103,3 +103,78 @@ function stopReading() {
   }
 }
 window.stopReading = stopReading;
+
+async function openQuizWindow(pointName) {
+  try {
+    const response = await fetch("./points.json");
+    const pointsData = await response.json();
+
+    const point = pointsData.find((p) => p.name === pointName);
+
+    if (point?.quiz) {
+      const quiz = point.quiz;
+
+      const quizWindow = document.createElement("div");
+      quizWindow.id = "quiz-window";
+      quizWindow.classList.add("modal", "fade");
+      quizWindow.setAttribute("tabindex", "-1");
+      quizWindow.setAttribute("aria-labelledby", "quizWindowLabel");
+      quizWindow.setAttribute("aria-hidden", "true");
+
+      quizWindow.innerHTML = `
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="quizWindowLabel">Quiz - ${
+                point.name
+              }</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h4>${quiz.question}</h4>
+              ${quiz.answers
+                .map(
+                  (answer, index) =>
+                    `<button class="btn btn-outline-primary w-100 my-2" onclick="checkAnswer(${index}, ${quiz.correct})">
+                      ${answer}
+                    </button>`
+                )
+                .join("")}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zamknij</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(quizWindow);
+
+      const modal = new bootstrap.Modal(quizWindow);
+      modal.show();
+    } else {
+      alert("Brak quizu dla tego punktu.");
+    }
+  } catch (error) {
+    console.error("Błąd podczas ładowania punktów:", error);
+    alert("Wystąpił problem z ładowaniem danych quizu.");
+  }
+}
+window.openQuizWindow = openQuizWindow;
+
+function closeQuizWindow() {
+  const quizWindow = document.getElementById("quiz-window");
+  if (quizWindow) {
+    quizWindow.remove();
+  }
+}
+window.closeQuizWindow = closeQuizWindow;
+
+function checkAnswer(selected, correct) {
+  alert(
+    selected === correct
+      ? "Dobra odpowiedź!"
+      : "Zła odpowiedź, spróbuj ponownie!"
+  );
+}
+window.checkAnswer = checkAnswer;
