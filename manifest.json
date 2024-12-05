@@ -1,7 +1,7 @@
 {
-  "name": "Leaflet Map App",
-  "short_name": "LeafletMap",
-  "description": "Prosta aplikacja mapowa wykorzystująca Leaflet",
+  "name": "UrbanGameBB",
+  "short_name": "UrbanGameBB",
+  "description": "Gra miejska na terenie Bielska-Białej",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
