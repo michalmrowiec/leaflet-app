@@ -60,7 +60,7 @@ export function setMarkers(map) {
         });
 
         marker.bindPopup(
-          `<h5><b>${point.name}</b></h5><br>${point.description}
+          `<h5><b>${point.name}</b></h5>
           <button onclick="teleportUser(${point.latitude}, ${point.longitude})" class="btn btn-sm btn-outline-primary">Teleportuj</button>`
         );
       });
